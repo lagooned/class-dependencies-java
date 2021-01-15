@@ -8,6 +8,8 @@ public class ClassDependencies {
   }
 
   String calculatePath(Map<Integer, List<Integer>> classes) {
-    return "";
+    return classes.keySet().stream()
+      .map(i -> i.toString())
+      .reduce("", (a, b) -> a + b);
   }
 }

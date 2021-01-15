@@ -15,9 +15,23 @@ public class ClassDependenciesShould {
   ClassDependencies classDependencies = new ClassDependencies();
 
   @Test
-  void add_two_numbers() {
+  void returnAString() {
+
     Map<Integer, List<Integer>> classes = Map.of(0, List.of());
-    assertThat(classDependencies.calculatePath(classes), isA(String.class));
+    assertThat(
+      classDependencies.calculatePath(classes),
+      isA(String.class));
+
+  }
+
+  @Test
+  void returnAStringOfSizeOfKeys() {
+
+    Map<Integer, List<Integer>> classes = Map.of(0, List.of());
+    assertThat(
+      classDependencies.calculatePath(classes).length(),
+      is(equalTo(classes.keySet().size())));
+
   }
 
 }
