@@ -25,11 +25,22 @@ public class ClassDependenciesShould {
   }
 
   @Test
-  void returnAStringOfSizeOfKeys() {
+  void returnAStringOfCorrectSize() {
 
-    Map<Integer, List<Integer>> classes = Map.of(0, List.of());
+    Map<Integer, List<Integer>> classes =
+      Map.of(0, List.of());
+
+    Map<Integer, List<Integer>> classes2 =
+      Map.of(0, List.of(),
+             1, List.of(0));
+
+    assertThat(classDependencies.calculatePath(classes).length(), is(equalTo(1)));
+
+    assertThat(classDependencies.calculatePath(classes2).length(), is(equalTo(3)));
+
+  }
     assertThat(
-      classDependencies.calculatePath(classes).length(),
+      classDependencies.calculatePath(classes).length() * 2 - 1,
       is(equalTo(classes.keySet().size())));
 
   }
