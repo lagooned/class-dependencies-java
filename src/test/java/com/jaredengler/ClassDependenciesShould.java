@@ -39,6 +39,19 @@ public class ClassDependenciesShould {
     assertThat(classDependencies.calculatePath(classes2).length(), is(equalTo(3)));
 
   }
+
+  @Test
+  void handleOneDependency() {
+
+    Map<Integer, List<Integer>> classes =
+      Map.of(0, List.of(),
+             1, List.of(0));
+
+    assertThat(
+      classDependencies.calculatePath(classes),
+      is(equalTo("0 1")));
+
+  }
     assertThat(
       classDependencies.calculatePath(classes).length() * 2 - 1,
       is(equalTo(classes.keySet().size())));

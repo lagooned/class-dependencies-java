@@ -11,6 +11,6 @@ public class ClassDependencies {
   String calculatePath(Map<Integer, List<Integer>> classes) {
     return classes.keySet().stream()
       .map(i -> i.toString())
-      .collect(Collectors.joining(" "));
+      .reduce("", (a, b) -> b + " " + a).trim();
   }
 }
