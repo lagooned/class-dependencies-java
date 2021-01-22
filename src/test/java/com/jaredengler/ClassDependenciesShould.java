@@ -53,4 +53,19 @@ public class ClassDependenciesShould {
 
   }
 
+  @Test
+  void handleTwoDependency() {
+
+    Map<Integer, List<Integer>> classes =
+      Map.of(0, List.of(),
+             1, List.of(0),
+             2, List.of(0),
+             3, List.of(1, 2));
+
+    assertThat(
+      classDependencies.calculatePath(classes),
+      is(equalTo("3 1 2 0")));
+
+  }
+
 }
