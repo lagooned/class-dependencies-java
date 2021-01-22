@@ -52,10 +52,5 @@ public class ClassDependenciesShould {
       is(equalTo("0 1")));
 
   }
-    assertThat(
-      classDependencies.calculatePath(classes).length() * 2 - 1,
-      is(equalTo(classes.keySet().size())));
-
-  }
 
 }
