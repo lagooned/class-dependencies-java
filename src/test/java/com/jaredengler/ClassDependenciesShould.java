@@ -31,7 +31,7 @@ public class ClassDependenciesShould {
   @Test
   void handleOneDependency() {
     Map<Integer, List<Integer>> classes = Map.of(0, List.of(), 1, List.of(0));
-    assertThat(classDependencies.calculatePath(classes), is(equalTo("1 0")));
+    assertThat(classDependencies.calculatePath(classes), is(equalTo("0 1")));
   }
 
   @Test
@@ -42,7 +42,7 @@ public class ClassDependenciesShould {
       2, List.of(0),
       3, List.of(1, 2)
     );
-    assertThat(classDependencies.calculatePath(classes), is(equalTo("3 2 1 0")));
+    assertThat(classDependencies.calculatePath(classes), is(equalTo("0 1 2 3")));
   }
 
 }

@@ -13,9 +13,7 @@ public class ClassDependencies {
   String calculatePath(Map<Integer, List<Integer>> classes) {
     String order = dfs(classes).stream()
       .map(i -> i.toString())
-      .sorted(Comparator.reverseOrder())
       .collect(Collectors.joining(" "));
-    System.out.println(order);
     return order;
   }
 
