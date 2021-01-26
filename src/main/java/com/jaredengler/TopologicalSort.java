@@ -1,47 +1,46 @@
 package com.jaredengler;
 
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-public class ClassDependencies {
+public class TopologicalSort {
 
-  String calculatePath(Map<Integer, List<Integer>> classes) {
-    String order = dfs(classes).stream()
-      .map(i -> i.toString())
-      .collect(Collectors.joining(" "));
-    return order;
+  public List<Integer> topologicalSort(Map<Integer, List<Integer>> graph) {
+      var list = dfs(graph).stream().collect(Collectors.toList());
+      Collections.reverse(list);
+      return list;
   }
 
-  public List<Integer> dfs(Map<Integer, List<Integer>> classes) {
+  private List<Integer> dfs(Map<Integer, List<Integer>> graph) {
     Map<Integer, Integer> parent = new HashMap<>();
     List<Integer> order = new ArrayList<>();
     // graph isn't necessarily connected
-    for (Entry<Integer, List<Integer>> entry : classes.entrySet()) {
+    for (Entry<Integer, List<Integer>> entry : graph.entrySet()) {
       Integer current = entry.getKey();
       if (!parent.containsKey(current)) {
         parent.put(current, null);
-        dfsVisit(classes, current, parent, order);
+        dfsVisit(graph, current, parent, order);
       }
     }
     return order;
   }
 
   private void dfsVisit(
-    Map<Integer, List<Integer>> classes,
+    Map<Integer, List<Integer>> graph,
     Integer current,
     Map<Integer, Integer> parent,
     List<Integer> order
   ) {
-    List<Integer> adj = classes.get(current);
+    List<Integer> adj = graph.get(current);
     for (Integer destination : adj) {
       if (!parent.containsKey(destination)) {
         parent.put(destination, current);
-        dfsVisit(classes, destination, parent, order);
+        dfsVisit(graph, destination, parent, order);
       }
     }
     // record dfs post order
