@@ -17,14 +17,15 @@ public class SudokuSolver {
   }
 
   boolean isPossible(int y, int x, int n) {
-    return isRowPossible(x, n) && isColPossible(y, n) && isBoxPossible(y, x, n);
+    return isRowPossible(x, n)
+      && isColPossible(y, n)
+      && isBoxPossible(y, x, n);
   }
 
   boolean isColPossible(int y, int n) {
-    for (var i = 0; i < 9; i++) {
+    for (var i = 0; i < 9; i++)
       if (grid[y][i] == n)
         return false;
-    }
 
     return true;
   }
