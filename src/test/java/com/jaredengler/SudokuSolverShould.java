@@ -73,30 +73,30 @@ public class SudokuSolverShould {
   void findIfPossibleByBox() {
 
     int[][] validBoxGrid = new int[][] {
-      new int[]{0,2,3,1,0,3,1,2,0},
+      new int[]{0,2,3,0,1,3,0,2,1},
       new int[]{4,5,6,4,5,6,4,5,6},
       new int[]{7,8,9,7,8,9,7,8,9},
-      new int[]{1,2,3,1,2,3,1,2,3},
-      new int[]{0,5,6,4,0,6,4,5,0},
+      new int[]{0,2,3,0,2,3,0,2,3},
+      new int[]{1,5,6,4,1,6,4,5,1},
       new int[]{7,8,9,7,8,9,7,8,9},
-      new int[]{1,2,3,1,2,3,1,2,3},
+      new int[]{0,2,3,0,2,3,0,2,3},
       new int[]{4,5,6,4,5,6,4,5,6},
-      new int[]{0,8,9,7,0,9,7,8,0},
+      new int[]{1,8,9,7,1,9,7,8,1},
     };
 
     sudokuSolver.setGrid(validBoxGrid);
 
     assertThat(sudokuSolver.isBoxPossible(0, 0, 1), is(true));
-    assertThat(sudokuSolver.isBoxPossible(0, 4, 2), is(true));
-    assertThat(sudokuSolver.isBoxPossible(0, 8, 3), is(true));
+    assertThat(sudokuSolver.isBoxPossible(0, 3, 2), is(true));
+    assertThat(sudokuSolver.isBoxPossible(0, 6, 3), is(true));
 
-    assertThat(sudokuSolver.isBoxPossible(4, 0, 4), is(true));
-    assertThat(sudokuSolver.isBoxPossible(4, 4, 5), is(true));
-    assertThat(sudokuSolver.isBoxPossible(4, 8, 6), is(true));
+    assertThat(sudokuSolver.isBoxPossible(3, 0, 4), is(true));
+    assertThat(sudokuSolver.isBoxPossible(3, 3, 5), is(true));
+    assertThat(sudokuSolver.isBoxPossible(3, 6, 6), is(true));
 
-    assertThat(sudokuSolver.isBoxPossible(8, 0, 7), is(true));
-    assertThat(sudokuSolver.isBoxPossible(8, 4, 8), is(true));
-    assertThat(sudokuSolver.isBoxPossible(8, 8, 9), is(true));
+    assertThat(sudokuSolver.isBoxPossible(6, 0, 7), is(true));
+    assertThat(sudokuSolver.isBoxPossible(6, 3, 8), is(true));
+    assertThat(sudokuSolver.isBoxPossible(6, 6, 9), is(true));
   }
 
 }
