@@ -39,8 +39,8 @@ public class SudokuSolver {
   }
 
   boolean isBoxPossible(int y, int x, int n) {
-    var x_0 = 3 * (x / 3);
-    var y_0 = 3 * (y / 3);
+    var x_0 = x - (x % 3);
+    var y_0 = y - (y % 3);
 
     for (var i = 0; i < 3; i++)
       for (var j = 0; j < 3; j++)
